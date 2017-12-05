@@ -204,6 +204,11 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
     <section class="content" style="margin: 0 5%">
         <!-- Info boxes -->
         <div class="row">
+            @if(Session::has('flash_message'))
+                <ul class="alert {{ Session::has('red') ? 'alert-danger' : 'alert-success' }}">
+                    <li style="list-style: none;">{{ Session::get('flash_message') }}</li>
+                </ul>
+            @endif
             @yield('content')
         </div>
         <!-- /.row -->

@@ -20,7 +20,8 @@
                     <div class="row">
                         <div class="col-xs-1"></div>
                         <div class="col-xs-4">
-                            <select name="debit_account[1]" id="">
+                            <select required class="form-control" name="debit_account[1]" id="">
+                                <option value="">Please Select Account</option>
                                 @foreach($accounts as $account)
                                     <option value="{{ $account->id }}">{{ $account->name }}( {{ $account->code }})
                                     </option>
@@ -29,7 +30,7 @@
                         </div>
                         <div class="col-xs-2"></div>
                         <div class="col-xs-2">
-                            <input name="debit[1]" type="text">
+                            <input required class="form-control" placeholder="Amount..." name="debit[1]" type="text">
                         </div>
                     </div>
                 </div>
@@ -38,7 +39,8 @@
                     <div class="row">
                         <div class="col-xs-2"></div>
                         <div class="col-xs-4">
-                            <select name="credit_account[1]" id="">
+                            <select required class="form-control" name="credit_account[1]" id="">
+                                <option value="">Please Select Account</option>
                                 @foreach($accounts as $account)
                                     <option value="{{ $account->id }}">{{ $account->name }}( {{ $account->code }})
                                     </option>
@@ -48,7 +50,7 @@
                         <div class="col-xs-3"></div>
 
                         <div class="col-xs-2">
-                            <input name="credit[1]" type="text">
+                            <input required class="form-control" placeholder="Amount..." name="credit[1]" type="text">
                         </div>
                     </div>
                 </div>

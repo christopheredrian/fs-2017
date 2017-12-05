@@ -7,6 +7,7 @@ use App\Ledger;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class JournalController extends Controller
 {
@@ -63,8 +64,8 @@ class JournalController extends Controller
                 $ledger->save();
             }
         });
-        dd('success!');
-
+        Session::flash('flash_message', 'Jouranl Posted successfully!');
+        return redirect(route('journals.create'));
     }
 
 //    public function rules() {
