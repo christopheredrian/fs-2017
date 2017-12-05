@@ -9,10 +9,9 @@
             <div class="box">
                 <div class="box-header page-header">
                     <h1>Financial Systems Final Project</h1>
-                    <p class="text-justify">This capstone project is a manifestation of our subject financial systems.
-                        The is the front-end
-                        as well as (in-addition) a back-end implementation of the system and is only one of the
-                        deliverables required to accomplish the project</p>
+                    <p>This capstone project is a manifestation of what we learned on our subject -
+                        financial systems.The is the front-end as well as (in-addition) a back-end implementation of the
+                        system and is only one of the deliverables required to accomplish the project</p>
                     <p>The project is submitted to <strong><a href="https://www.facebook.com/jonutz">Mr. Jonathan A.
                                 Ramirez</a></strong></p>
                 </div>
@@ -29,12 +28,14 @@
                         <li>
                             <a href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/edit?usp=sharing">Google
                                 Docs</a>
-                            (<a href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/export?format=pdf">PDF <i class="fa fa-file-pdf-o"></i></a>)
+                            (<a href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/export?format=pdf">PDF
+                                <i class="fa fa-file-pdf-o"></i></a>)
                         </li>
                         <li>
                             <a href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/edit?usp=sharing">Google
                                 Sheets</a>
-                            (<a href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/export?format=xlsx">XLS <i class="fa fa-file-excel-o"></i></a>)
+                            (<a href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/export?format=xlsx">XLS
+                                <i class="fa fa-file-excel-o"></i></a>)
 
                         </li>
                     </ul>
