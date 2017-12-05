@@ -2,7 +2,13 @@
 
 @section('styles')
     <style>
+        .row {
+            margin: 1.6% 0;
+        }
 
+        .page-header h2 {
+            display: inline;
+        }
     </style>
 @endsection
 
@@ -15,10 +21,14 @@
         <div class="box-body">
             <form action="{{ route('journals.store')}}" method="post">
                 {{ csrf_field() }}
-                <h3>Date: {{ \Carbon\Carbon::now() }}</h3>
+                <div class="row page-header">
+                        <h2 class="col-xs-5">{{ \Carbon\Carbon::now()->toDayDateTimeString() }}</h2>
+
+                    <h2 class="col-xs-3">Debit</h2>
+                    <h2 class="col-xs-3">Credit</h2>
+                </div>
                 <div id="debit">
                     <div class="row">
-                        <div class="col-xs-1"></div>
                         <div class="col-xs-4">
                             <select required class="form-control" name="debit_account[1]" id="">
                                 <option value="">Please Select Account</option>
@@ -28,16 +38,23 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-xs-2"></div>
-                        <div class="col-xs-2">
+                        <div class="col-xs-1"></div>
+                        <div class="col-xs-3">
                             <input required class="form-control" placeholder="Amount..." name="debit[1]" type="text">
                         </div>
+                        <div class="col-xs-3"></div>
+
                     </div>
                 </div>
-                <span id="add-debit" class="btn btn-success btn-xs">Add another field + </span>
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-3">
+                        <span id="add-debit" class="pull-right btn btn-success btn-xs">Add another field + </span>
+                    </div>
+                </div>
                 <div id="credit">
                     <div class="row">
-                        <div class="col-xs-2"></div>
+                        <div class="col-xs-1"></div>
                         <div class="col-xs-4">
                             <select required class="form-control" name="credit_account[1]" id="">
                                 <option value="">Please Select Account</option>
@@ -49,12 +66,17 @@
                         </div>
                         <div class="col-xs-3"></div>
 
-                        <div class="col-xs-2">
+                        <div class="col-xs-3">
                             <input required class="form-control" placeholder="Amount..." name="credit[1]" type="text">
                         </div>
                     </div>
                 </div>
-                <span id="add-credit" class="btn btn-success btn-xs">Add another field + </span>
+                <div class="row">
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-3">
+                        <span id="add-credit" class="btn btn-success btn-xs pull-right">Add another field + </span>
+                    </div>
+                </div>
                 <div>
                     <p>
                         <button type="submit" class="btn btn-success pull-right">Submit</button>

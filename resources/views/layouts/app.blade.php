@@ -167,8 +167,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                     </span>
                 </a>
             </li>
-            <li class="{{ Request::is('ledger*') ? 'active' : '' }}">
-                <a href="/ledger">
+            <li class="{{ Request::is('ledgers*') ? 'active' : '' }}">
+                <a href="/ledgers">
                     <i class="fa fa-money"></i> <span>Ledger
                     </span>
                 </a>
