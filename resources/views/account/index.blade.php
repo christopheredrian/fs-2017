@@ -1,13 +1,25 @@
 @extends('layouts.app')
 
+@section('styles')
+    <style>
+        .row {
+            margin-bottom: 1.7%;
+        }
+    </style>
+@endsection
+
 @section('content')
 
     <div class="box">
-        <div class="box-header">
+        <div class="box-header page-header">
             <h1>Chart of Accounts</h1>
         </div>
         <div class="box-body">
-            <a class="btn btn-success" href="{{ url('/accounts/create') }}">Create</a>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="btn btn-success" href="{{ url('/accounts/create') }}">Create</a>
+                </div>
+            </div>
             <table class="table table-striped table-condensed table-bordered">
                 <thead>
                 <tr>

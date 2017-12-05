@@ -14,19 +14,19 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Account Name</label>
                         <div class="col-sm-10">
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Account Name..." required>
+                            <input required name="name" type="text" class="form-control" id="name" placeholder="Account Name..." required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="code" class="col-sm-2 control-label">Code</label>
                         <div class="col-sm-10">
-                            <input name="code" type="text" class="form-control" id="code" placeholder="i.e 301" required>
+                            <input required name="code" type="text" class="form-control" id="code" placeholder="i.e 301" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">Type</label>
                         <div class="col-sm-10">
-                            <select name="type" id="type">
+                            <select required class="form-control" name="type" id="type">
                                 <option value="B+">Balance Sheet (+)</option>
                                 <option value="B-">Balance Sheet (-)</option>
                                 <option value="I+">Income Statement (+)</option>
@@ -37,7 +37,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-default">Cancel</button>
+                    <a href="{{ route('accounts.index') }}" class="btn btn-default">Cancel</a>
                     <button type="submit" class="btn btn-success pull-right">Create</button>
                 </div>
                 <!-- /.box-footer -->
