@@ -22,3 +22,4 @@ Route::resource('accounts', 'AccountController');
 Route::resource('journals', 'JournalController', [
     'only' => ['index', 'create', 'store']
 ]);
+Route::get('ledgers', 'LedgerController@index');
