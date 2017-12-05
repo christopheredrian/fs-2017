@@ -15,6 +15,8 @@ class CreateLedgersTable extends Migration
     {
         Schema::create('ledgers', function (Blueprint $table) {
             $table->increments('id');
+            $table->decimal('debit');
+            $table->decimal('credit');
             $table->integer('transaction_id')->unsigned();
             $table->foreign('transaction_id')
                 ->references('id')

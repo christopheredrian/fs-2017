@@ -36,8 +36,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $account = new Account();
-        $account->name = $request->input('name');
+        $account = new Account($request->all());
         $account->save();
         return redirect('/accounts');
     }

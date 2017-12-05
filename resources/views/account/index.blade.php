@@ -13,6 +13,8 @@
                 <tr>
                     <th>id</th>
                     <th>Account Name</th>
+                    <th>Code</th>
+                    <th>Type</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -21,6 +23,8 @@
                     <tr>
                         <td>{{ $account->id }}</td>
                         <td>{{ $account->name }}</td>
+                        <td>{{ $account->code }}</td>
+                        <td>{{ $account->type }}</td>
                         <td><a href="{{ url("/accounts/$account->id/edit") }}" class="btn btn-warning btn-xs">Edit</a></td>
                     </tr>
                 @endforeach

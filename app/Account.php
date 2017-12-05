@@ -9,6 +9,6 @@ class Account extends Model
     //
 
     protected $fillable = [
-        'name'
+        'name', 'code', 'type'
     ];
 }
