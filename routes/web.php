@@ -17,5 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/accounts', 'AccountController');
+Route::get('home', 'HomeController@index')->name('home');
+Route::resource('accounts', 'AccountController');
+Route::resource('journals', 'JournalController', [
+    'only' => ['index', 'create', 'store']
+]);

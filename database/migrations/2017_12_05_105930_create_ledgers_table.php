@@ -17,6 +17,10 @@ class CreateLedgersTable extends Migration
             $table->increments('id');
             $table->decimal('debit');
             $table->decimal('credit');
+            $table->integer('account_id')->unsigned();
+            $table->foreign('account_id')
+                ->references('id')
+                ->on('accounts');
             $table->integer('transaction_id')->unsigned();
             $table->foreign('transaction_id')
                 ->references('id')

@@ -161,8 +161,8 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
                     </span>
                 </a>
             </li>
-            <li class="{{ Request::is('journal*') ? 'active' : '' }}">
-                <a href="/accounts">
+            <li class="{{ Request::is('journals*') ? 'active' : '' }}">
+                <a href="/journals">
                     <i class="fa fa-book"></i> <span>Journal
                     </span>
                 </a>
