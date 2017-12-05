@@ -17,10 +17,10 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-xs-12">
-                    <a class="btn btn-success" href="{{ route('journals.create')}}">Create</a>
+                    <a class="btn btn-success" href="{{ route('journals.create')}}">Post new entry</a>
                 </div>
             </div>
-            <table class="table table-striped table-condensed table-bordered table-responsive">
+            <table id="data-table" class="table table-striped table-condensed table-bordered table-responsive">
                 <thead>
                 <tr>
                     <th>Transaction #</th>
@@ -51,4 +51,12 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#data-table').DataTable();
+        });
+    </script>
 @endsection

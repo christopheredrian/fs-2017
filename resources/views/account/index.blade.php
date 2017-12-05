@@ -20,7 +20,7 @@
                     <a class="btn btn-success" href="{{ url('/accounts/create') }}">Create</a>
                 </div>
             </div>
-            <table class="table table-striped table-condensed table-bordered">
+            <table id="data-table" class="table table-striped table-condensed table-bordered">
                 <thead>
                 <tr>
                     <th>id</th>
@@ -45,4 +45,12 @@
         </div>
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $('#data-table').DataTable();
+        });
+    </script>
 @endsection
