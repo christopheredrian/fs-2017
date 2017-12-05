@@ -52,7 +52,7 @@
         <!-- Logo -->
         <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>DBC</span>
+            <span class="logo-mini"><b>FS</b>Project</span>
             <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>FS</b>Project</span>
         </a>
@@ -70,7 +70,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs"> username</span>
+                            <span class="hidden-xs"> admin@fs-2017@herokuapp.com</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -78,7 +78,7 @@
                                 <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <small>User</small>
+                                    <small>Jonathan Ramirez</small>
                                     <small>Logged in!</small>
                                 </p>
                             </li>
@@ -119,31 +119,31 @@
                     <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Name here
+                    <p>Jonathan Ramirez
                     </p>
                     <a href="#"><i
-                                class="fa fa-circle text-success"></i> John Doe
+                                class="fa fa-circle text-success"></i> Logged in as Admin
                     </a>
                 </div>
             </div>
-            <!-- search form -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                          <i class="fa fa-search"></i>
-                      </button>
-                  </span>
-                </div>
-            </form>
-            <!-- /.search form -->
+            {{--<!-- search form -->--}}
+            {{--<form action="#" method="get" class="sidebar-form">--}}
+                {{--<div class="input-group">--}}
+                    {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
+                    {{--<span class="input-group-btn">--}}
+                        {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat">--}}
+                          {{--<i class="fa fa-search"></i>--}}
+                      {{--</button>--}}
+                  {{--</span>--}}
+                {{--</div>--}}
+            {{--</form>--}}
+            {{--<!-- /.search form -->--}}
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
 
                 <li class="{{ Request::is('about*') ? 'active' : '' }}">
-                    <a href="about">
+                    <a href="/about">
                         <i class="fa fa-paperclip"></i> <span>About Project</span>
                     </a>
 
