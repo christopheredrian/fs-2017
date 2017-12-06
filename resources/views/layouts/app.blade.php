@@ -185,12 +185,11 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-
-                            <a href=""> <i class="fa fa-money"></i> Income Statement</a>
+                            <a href="/income"> <i class="fa fa-money"></i> Income Statement</a>
                         </li>
                         <li>
 
-                            <a href=""><i class="fa fa-balance-scale"></i> Balance Sheet</a>
+                            <a href="/balance"><i class="fa fa-balance-scale"></i> Balance Sheet</a>
                         </li>
                     </ul>
                 </li>
