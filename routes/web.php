@@ -12,10 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/about', 'HomeController@about');
-
-Auth::routes();
-
+Route::get('about', 'HomeController@about');
 Route::get('home', 'HomeController@index')->name('home');
 Route::resource('accounts', 'AccountController');
 Route::resource('journals', 'JournalController', [
@@ -24,3 +21,5 @@ Route::resource('journals', 'JournalController', [
 Route::get('ledgers', 'LedgerController@index');
 Route::get('income', 'ReportController@income');
 Route::get('balance', 'ReportController@balance');
+
+Auth::routes();
