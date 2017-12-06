@@ -15,17 +15,16 @@
 @section('content')
 
     <div class="box">
-        <div class="box-header">
+        <div class="box-header page-header">
             <h1>Add New Journal Entry</h1>
         </div>
         <div class="box-body">
             <form action="{{ route('journals.store')}}" method="post">
                 {{ csrf_field() }}
                 <div class="row page-header">
-                        <h2 class="col-xs-5">{{ \Carbon\Carbon::now()->toDayDateTimeString() }}</h2>
-
-                    <h2 class="col-xs-3">Debit</h2>
-                    <h2 class="col-xs-3">Credit</h2>
+                    <h4 class="col-xs-5">{{ \Carbon\Carbon::now()->toDayDateTimeString() }}</h4>
+                    <h4 class="col-xs-3">Debit</h4>
+                    <h4 class="col-xs-3">Credit</h4>
                 </div>
                 <div id="debit">
                     <div class="row">

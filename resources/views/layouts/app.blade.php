@@ -149,7 +149,7 @@
 
                 </li>
                 <li class="{{ Request::is('admin') ? 'active' : '' }}">
-                    <a href="/dashboard">
+                    <a href="/">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
 

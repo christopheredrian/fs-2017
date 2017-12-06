@@ -9,6 +9,9 @@
             <div class="box">
                 <div class="box-header page-header">
                     <h1>Financial Systems Final Project</h1>
+
+                </div>
+                <div class="box-body">
                     <p>This capstone project is a manifestation of what we learned on our subject -
                         financial systems.The is the front-end as well as (in-addition) a back-end implementation of the
                         system and is only one of the deliverables required to accomplish the project</p>
@@ -23,6 +26,8 @@
             <div class="box">
                 <div class="box-header page-header">
                     <h2>Documentation <i class="fa fa-file-text"></i></h2>
+                </div>
+                <div class="box-body">
                     <p>The documentation can be found in the links provided below</p>
                     <ul>
                         <li>
@@ -45,15 +50,15 @@
                         <li><a href="http://fs-2017.herokuapp.com">Heroku App (deployed)</a></li>
                     </ul>
                 </div>
-                <div class="box-body">
-
-                </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="box">
                 <div class="box-header page-header">
                     <h2> Members <i class="fa fa-users"></i></h2>
+
+                </div>
+                <div class="box-body">
                     <p>The group is composed of seven members</p>
                     <ul>
                         <li>Agusdan, Arnel C.</li>
@@ -64,9 +69,6 @@
                         <li>Salazar, Von</li>
                         <li>Willy, Kim</li>
                     </ul>
-                </div>
-                <div class="box-body">
-
                 </div>
             </div>
         </div>
