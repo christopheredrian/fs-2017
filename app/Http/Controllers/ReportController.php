@@ -23,7 +23,9 @@ class ReportController extends Controller
      */
     public function balance()
     {
-        return view('report.balance');
+        return view('report.balance',[
+
+        ]);
     }
 
 

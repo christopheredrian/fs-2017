@@ -13,24 +13,25 @@ class LedgersTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
         foreach (Transaction::all() as $transaction) {
-
+            $amount = $faker->randomFloat($nbMaxDecimals = 2, $min = 100, $max = 100000);
             // Debit
             Ledger::insert([
-                'id' => 1,
-                'debit' => 100,
+                'debit' => $amount,
                 'credit' => 0,
-                'account_id' => '1',
+                'account_id' => $faker->randomElement(\App\Account::all()->pluck('id')->toArray()),
                 'transaction_id' => $transaction->id
             ]);
             // Credit
             Ledger::insert([
-                'id' => 1,
                 'debit' => 0,
-                'credit' => 100,
-                'account_id' => '1',
+                'credit' => $amount,
+                'account_id' => $faker->randomElement(\App\Account::all()->pluck('id')->toArray()),
                 'transaction_id' => $transaction->id
             ]);
 
         }
     }
+
+}

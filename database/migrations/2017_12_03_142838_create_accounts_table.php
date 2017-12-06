@@ -17,7 +17,12 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->enum('type', ['Current Assets', 'Investment', 'Intellectual Property', 'Property, Plant and Equipment', 'Current Liabilities', 'Long-term Liabilities', 'Capital','Income','Expenses']);
+            $table->enum('type', [
+                'Current Assets', 'Investment', 'Intellectual Property', 'Property, Plant and Equipment',
+                'Current Liabilities', 'Long-term Liabilities',
+                'Capital', 'Drawing',
+                'Income','Expenses'
+            ]);
             $table->timestamps();
         });
     }

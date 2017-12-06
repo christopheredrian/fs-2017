@@ -17,50 +17,82 @@ class AccountsTableSeeder extends Seeder
                 'id' => 1,
                 'code' => '100',
                 'name' => 'Cash',
-                'type' => 'B+'
+                'type' => 'Current Assets'
             ],
             [
                 'id' => 2,
-                'code' => '101',
+                'code' => '260',
                 'name' => 'Land',
-                'type' => 'B+'
+                'type' => 'Property, Plant and Equipment'
             ],
             [
                 'id' => 3,
-                'code' => '102',
+                'code' => '270',
                 'name' => 'Equipment',
-                'type' => 'B+'
+                'type' => 'Property, Plant and Equipment'
             ],
             [
                 'id' => 4,
-                'code' => '103',
+                'code' => '110',
                 'name' => 'Accounts Receivable',
-                'type' => 'B+'
+                'type' => 'Current Assets'
             ],
             [
                 'id' => 5,
                 'code' => '300',
                 'name' => 'Accounts Payable',
-                'type' => 'B-'
+                'type' => 'Current Liabilities'
             ],
             [
                 'id' => 6,
                 'code' => '400',
                 'name' => 'Sales',
-                'type' => 'I+'
+                'type' => 'Income'
             ],
             [
                 'id' => 7,
                 'code' => '401',
                 'name' => 'Sales Discount',
-                'type' => 'I-'
+                'type' => 'Income'
             ],
             [
                 'id' => 8,
-                'code' => '500',
-                'name' => 'Rent Expense',
-                'type' => 'I-'
+                'code' => '420',
+                'name' => 'Taxes and Licenses Expense',
+                'type' => 'Expenses'
             ],
+            [
+                'id' => 9,
+                'code' => '200',
+                'name' => 'Investment BPI',
+                'type' => 'Investment'
+            ],
+            [
+                'id' => 10,
+                'code' => '250',
+                'name' => 'Trademark',
+                'type' => 'Intellectual Property'
+            ],
+            [
+                'id' => 11,
+                'code' => '320',
+                'name' => 'Mortgage Payable',
+                'type' => 'Long-Term Liabilities'
+            ],
+            [
+                'id' => 12,
+                'code' => '350',
+                'name' => 'Capital, Ila Liag',
+                'type' => 'Capital'
+            ],
+            [
+                'id' => 13,
+                'code' => '351',
+                'name' => 'Withdrawal, Ila Liag',
+                'type' => 'Drawing'
+            ],
+
+
 
         ];
 
