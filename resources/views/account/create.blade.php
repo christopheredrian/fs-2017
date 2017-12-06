@@ -27,12 +27,15 @@
                         <label for="type" class="col-sm-2 control-label">Type</label>
                         <div class="col-sm-10">
                             <select required class="form-control" name="type" id="type">
-                                <option value="B+">Asset</option>
-                                <option value="B-">Liability</option>
-                                <option value="C+">Capital</option>
-                                <option value="C-">Withdrawal</option>
-                                <option value="I+">Income</option>
-                                <option value="I-">Expense</option>
+                                @foreach(\App\Utilities::getEnumValues('accounts','type') as $val)
+                                    <option value="{{ $val }}">{{ $val }}</option>
+                                @endforeach
+                                {{--<option value="B+">Asset</option>--}}
+                                {{--<option value="B-">Liability</option>--}}
+                                {{--<option value="C+">Capital</option>--}}
+                                {{--<option value="C-">Withdrawal</option>--}}
+                                {{--<option value="I+">Income</option>--}}
+                                {{--<option value="I-">Expense</option>--}}
                             </select>
                         </div>
                     </div>

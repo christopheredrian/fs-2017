@@ -23,9 +23,8 @@
             <table id="data-table" class="table table-striped table-condensed table-bordered">
                 <thead>
                 <tr>
-                    <th>id</th>
-                    <th>Account Name</th>
                     <th>Code</th>
+                    <th>Account Name</th>
                     <th>Type</th>
                     <th>Action</th>
                 </tr>
@@ -33,9 +32,8 @@
                 <tbody>
                 @foreach($accounts as $account)
                     <tr>
-                        <td>{{ $account->id }}</td>
-                        <td>{{ $account->name }}</td>
                         <td>{{ $account->code }}</td>
+                        <td>{{ $account->name }}</td>
                         <td>{{ $account->type }}</td>
                         <td><a href="{{ url("/accounts/$account->id/edit") }}" class="btn btn-warning btn-xs">Edit</a></td>
                     </tr>
