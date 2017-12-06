@@ -59,8 +59,7 @@
                             <select required class="form-control" name="credit_account[1]" id="">
                                 <option value="">Please Select Account</option>
                                 @foreach($accounts as $account)
-                                    <option value="{{ $account->id }}">{{ $account->name }}( {{ $account->code }})
-                                    </option>
+                                    <option value="{{ $account->id }}">{{ $account->name }}({{ $account->code }})</option>
                                 @endforeach
                             </select>
                         </div>

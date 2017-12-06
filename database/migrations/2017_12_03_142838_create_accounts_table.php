@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->enum('type', ['I+', 'I-', 'B+', 'B-']);
+            $table->enum('type', ['I+', 'I-', 'B+', 'B-', 'C+', 'C-']);
             $table->timestamps();
         });
     }
