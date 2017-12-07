@@ -2,34 +2,45 @@
 
 @section('styles')
     <style>
-        .table{
-            font-size: 0.6em;
-        }
         .borderless td, .borderless th {
             border: none;
         }
+
+        @media print {
+            footer, button.btn-danger{
+                display: none;
+            }
+        }
+
     </style>
 @endsection
 
 @section('content')
 
     <div class="box">
-        <div class="box-header page-header">
+        <div class="box-header">
             <h2 class="text-center">
                 Baguio City Hall <br>
                 Balance Sheet<br>
                 as of {{ \Carbon\Carbon::now()->toFormattedDateString() }}
             </h2>
+            <div class="col-xs-12">
+                <button class="btn btn-danger btn-md pull-right" onclick="window.print()">
+                    <i class="fa fa-print"> Print</i>
+                </button>
+            </div>
 
-            <table class="table borderless">
-                <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Type</th>
-                    <th>Account</th>
-                    <th>Total</th>
-                </tr>
-                </thead>
+        </div>
+        <div class="box-body">
+            <table class="table table-hover table-bordered">
+                {{--<thead>--}}
+                {{--<tr>--}}
+                    {{--<th>Code</th>--}}
+                    {{--<th>Type</th>--}}
+                    {{--<th>Account</th>--}}
+                    {{--<th>Total</th>--}}
+                {{--</tr>--}}
+                {{--</thead>--}}
                 <tbody>
                 {{-- Assets --}}
                 <tr>
@@ -180,9 +191,6 @@
                 @endforeach()
                 </tbody>
             </table>
-        </div>
-        <div class="box-body">
-
         </div>
     </div>
 
