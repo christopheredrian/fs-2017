@@ -69,13 +69,13 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            {{--<img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">--}}
                             <span class="hidden-xs"> admin@fs-2017@herokuapp.com</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                {{--<img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--}}
 
                                 <p>
                                     <small>Jonathan Ramirez</small>
@@ -101,9 +101,9 @@
                         </ul>
                     </li>
                     <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
+                    {{--<li>--}}
+                        {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
+                    {{--</li>--}}
                 </ul>
             </div>
 
@@ -116,9 +116,10 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    {{--<img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">--}}
+                    <i class="fa fa-user img-circle" style="font-size: 3.5em; color: white;"></i>
                 </div>
-                <div class="pull-left info">
+                <div class="info" style="color: white">
                     <p>Jonathan Ramirez
                     </p>
                     <a href="#"><i
@@ -126,19 +127,19 @@
                     </a>
                 </div>
             </div>
-            {{--<!-- search form -->--}}
-            {{--<form action="#" method="get" class="sidebar-form">--}}
-                {{--<div class="input-group">--}}
-                    {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
-                    {{--<span class="input-group-btn">--}}
-                        {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat">--}}
-                          {{--<i class="fa fa-search"></i>--}}
-                      {{--</button>--}}
-                  {{--</span>--}}
-                {{--</div>--}}
-            {{--</form>--}}
-            {{--<!-- /.search form -->--}}
-            <!-- sidebar menu: : style can be found in sidebar.less -->
+        {{--<!-- search form -->--}}
+        {{--<form action="#" method="get" class="sidebar-form">--}}
+        {{--<div class="input-group">--}}
+        {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
+        {{--<span class="input-group-btn">--}}
+        {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat">--}}
+        {{--<i class="fa fa-search"></i>--}}
+        {{--</button>--}}
+        {{--</span>--}}
+        {{--</div>--}}
+        {{--</form>--}}
+        {{--<!-- /.search form -->--}}
+        <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
 
@@ -174,7 +175,7 @@
                     </span>
                     </a>
                 </li>
-                <li class="treeview {{ Request::is('reports*') ? 'active' : '' }}">
+                <li class="treeview {{ (Request::is('income*') || Request::is('balance*') )? 'active' : '' }}">
                     <a href="#">
                         <i class="fa fa-file"></i>
                         <span>Reports
@@ -184,10 +185,10 @@
                   </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li>
+                        <li class="{{ Request::is('income*') ? 'active' : '' }}">
                             <a href="/income"> <i class="fa fa-money"></i> Income Statement</a>
                         </li>
-                        <li>
+                        <li class="{{ Request::is('balance*') ? 'active' : '' }}">
 
                             <a href="/balance"><i class="fa fa-balance-scale"></i> Balance Sheet</a>
                         </li>

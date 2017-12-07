@@ -32,7 +32,7 @@
                             <select required class="form-control" name="debit_account[1]" id="">
                                 <option value="">Please Select Account</option>
                                 @foreach($accounts as $account)
-                                    <option value="{{ $account->id }}">{{ $account->name }}( {{ $account->code }})
+                                    <option value="{{ $account->id }}">{{ $account->name }}({{ $account->code }})
                                     </option>
                                 @endforeach
                             </select>
@@ -58,7 +58,8 @@
                             <select required class="form-control" name="credit_account[1]" id="">
                                 <option value="">Please Select Account</option>
                                 @foreach($accounts as $account)
-                                    <option value="{{ $account->id }}">{{ $account->name }}({{ $account->code }})</option>
+                                    <option value="{{ $account->id }}">{{ $account->name }}({{ $account->code }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -76,9 +77,8 @@
                     </div>
                 </div>
                 <div>
-                    <p>
-                        <button type="submit" class="btn btn-success pull-right">Submit</button>
-                    </p>
+                    <button style="margin: 0 0 0 2.5%" type="submit" class="btn btn-success pull-right">Submit</button>
+                    <button onclick="location.reload()" class="pull-right btn btn-warning">Clear</button>
                 </div>
             </form>
         </div>

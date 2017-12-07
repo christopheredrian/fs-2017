@@ -32,7 +32,7 @@
 
         </div>
         <div class="box-body">
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover">
                 {{--<thead>--}}
                 {{--<tr>--}}
                     {{--<th>Code</th>--}}

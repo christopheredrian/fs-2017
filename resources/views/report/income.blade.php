@@ -14,10 +14,10 @@
 
     <div class="box">
         <div class="box-header">
-            <h1 class="text-center">Baguio City Hall <br>
+            <h2 class="text-center">Baguio City Hall <br>
                 Income Statement <br>
                 For the period of {{ $start }} to {{ $end }}
-            </h1>
+            </h2>
             <div class="col-xs-12">
                 <button class="btn btn-danger btn-md pull-right" onclick="window.print()">
                     <i class="fa fa-print"> Print</i>
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="box-body">
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover">
                 {{--<thead>--}}
                 {{--<tr>--}}
                     {{--<th>Code</th>--}}

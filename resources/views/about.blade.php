@@ -31,23 +31,23 @@
                     <p>The documentation can be found in the links provided below</p>
                     <ul>
                         <li>
-                            <a href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/edit?usp=sharing">Google
+                            <a target="_blank" href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/edit?usp=sharing">Google
                                 Docs</a>
-                            (<a href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/export?format=pdf">PDF
+                            (<a target="_blank" href="https://docs.google.com/document/d/1BUyTB0AFcuy7csvf6ZYzpyGpU5sWaQqvnJEFj8u6DB8/export?format=pdf">PDF
                                 <i class="fa fa-file-pdf-o"></i></a>)
                         </li>
                         <li>
-                            <a href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/edit?usp=sharing">Google
+                            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/edit?usp=sharing">Google
                                 Sheets</a>
-                            (<a href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/export?format=xlsx">XLS
+                            (<a target="_blank" href="https://docs.google.com/spreadsheets/d/1dQhz8byiQqePl-HzBe-CYa1FhpjumnIcp7Cubj2CuDw/export?format=xlsx">XLS
                                 <i class="fa fa-file-excel-o"></i></a>)
 
                         </li>
                     </ul>
                     <p>As well as the code repository and the link to <strong>this</strong> web application</p>
                     <ul>
-                        <li><a href="https://github.com/christopheredrian/fs-2017">Github</a></li>
-                        <li><a href="http://fs-2017.herokuapp.com">Heroku App (deployed)</a></li>
+                        <li><a target="_blank" href="https://github.com/christopheredrian/fs-2017">Github</a></li>
+                        <li><a target="_blank" href="http://fs-2017.herokuapp.com">Heroku App (deployed)</a></li>
                     </ul>
                 </div>
             </div>
