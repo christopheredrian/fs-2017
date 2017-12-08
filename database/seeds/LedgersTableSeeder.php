@@ -48,6 +48,90 @@ class LedgersTableSeeder extends Seeder
             ]);
         }
 
+        // Monthly
+        Ledger::insert([
+            'debit' => 50000,
+            'credit' => 0,
+            'account_id' => \App\Account::where('code', '420')->first()->id,
+            'transaction_id' => 30
+        ]);
+
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 50000,
+            'account_id' => \App\Account::where('code', '710')->first()->id,
+            'transaction_id' => 30
+        ]);
+
+        Ledger::insert([
+        'debit' => 60000,
+        'credit' => 0,
+        'account_id' => \App\Account::where('code', '420')->first()->id,
+        'transaction_id' => 30
+    ]);
+
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 60000,
+            'account_id' => \App\Account::where('code', '710')->first()->id,
+            'transaction_id' => 30
+        ]);
+
+        Ledger::insert([
+            'debit' => 10000,
+            'credit' => 0,
+            'account_id' => \App\Account::where('code', '840')->first()->id,
+            'transaction_id' => 30
+        ]);
+
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 10000,
+            'account_id' => \App\Account::where('code', '130')->first()->id,
+            'transaction_id' => 30
+        ]);
+
+        // Yearly
+        Ledger::insert([
+            'debit' => (double) 200,
+            'credit' => 0,
+            'account_id' => \App\Account::where('code', '880')->first()->id,
+            'transaction_id' => 50
+        ]);
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 200,
+            'account_id' => \App\Account::where('code', '215')->first()->id,
+            'transaction_id' => 50
+        ]);
+
+        Ledger::insert([
+            'debit' => 300,
+            'credit' => 0,
+            'account_id' => \App\Account::where('code', '880')->first()->id,
+            'transaction_id' => 50
+        ]);
+
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 300,
+            'account_id' => \App\Account::where('code', '225')->first()->id,
+            'transaction_id' => 50
+        ]);
+
+        Ledger::insert([
+            'debit' => 100,
+            'credit' => 0,
+            'account_id' => \App\Account::where('code', '880')->first()->id,
+            'transaction_id' => 50
+        ]);
+        Ledger::insert([
+            'debit' => 0,
+            'credit' => 100,
+            'account_id' => \App\Account::where('code', '235')->first()->id,
+            'transaction_id' => 50
+        ]);
+
     }
 
 }

@@ -41,7 +41,7 @@ class AccountsTableSeeder extends Seeder
                 'id' => 5,
                 'code' => '215',
                 'name' => 'Accumulated Depreciation - Furniture',
-                'type' => 'Non-current Assets'
+                'type' => 'Contra-asset'
             ],
             [
                 'id' => 6,
@@ -59,7 +59,7 @@ class AccountsTableSeeder extends Seeder
                 'id' => 8,
                 'code' => '230',
                 'name' => 'Office equipment',
-                'type' => 'Current Assets'
+                'type' => 'Non-current Assets'
             ],
             [
                 'id' => 9,

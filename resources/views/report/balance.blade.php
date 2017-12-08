@@ -99,6 +99,25 @@
                         {{--<td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) > 0 ? $ca->ledgers->sum('debit') : '' }}</td>--}}
                     {{--</tr>--}}
                 {{--@endforeach()--}}
+
+                {{-- Contra-asset --}}
+                <?php $depreciation = 0 ?>
+                @foreach(\App\Account::where('type', 'Contra-asset')->get() as $ca)
+                    <?php
+                    $depreciation += ($ca->ledgers->sum('credit') - $ca->ledgers->sum('debit'));
+                    ?>
+                    <tr>
+
+                        <td>{{ $ca->code }}</td>
+                        <td>{{ $ca->type }}</td>
+                        <td>Less: {{ $ca->name }}</td>
+                        <td>
+                            <?php
+                            echo $ca->ledgers->sum('credit') - $ca->ledgers->sum('debit');
+                            ?>
+                        </td>
+                    </tr>
+                @endforeach()
                 <tr>
                     <td></td>
                     <td></td>
@@ -110,7 +129,7 @@
                         $ids = \App\Account::whereIn('type', $types)->pluck('id');
                         $sumDebit = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
                         $sumCredit = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                        echo $sumDebit - $sumCredit;
+                        echo ($sumDebit - $sumCredit)- $depreciation;
                         ?>
                     </td>
                 </tr>
@@ -169,7 +188,7 @@
                         $totalLiab = $sumCredit - $sumDebit;
                         $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
 
-                        echo  $totalLiab - $unearnedServiceIncome;
+                        echo  $totalLiab;
                         ?>
                     </td>
                 </tr>
@@ -213,7 +232,7 @@
 
 
                         $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
-                        $netIncome = ($sumCreditIncome + $unearnedServiceIncome) - $sumExpenses;
+                        $netIncome = ($sumCreditIncome) - $sumExpenses;
                         echo $netIncome;
                         ?>
                     </td>

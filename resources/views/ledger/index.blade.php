@@ -37,7 +37,6 @@
                         <tr>
                             <td>{{ $transaction->id }}</td>
                             <td>{{ $transaction->created_at->toDateString() }}
-                                ({{ $transaction->created_at->toTimeString() }})
                             </td>
                             <td>{{ $ledger->account->code }}</td>
                             <td>{{ $ledger->account->name }}</td>

@@ -34,7 +34,7 @@
                         <td>{{ $ca->name }}</td>
                         <td></td>
                         @if(str_contains($ca->name, 'Service'))
-                            <td>{{ \App\Ledger::whereIn('account_id',[15, 11] )->sum('credit')  }}</td>
+                            <td>{{ \App\Ledger::whereIn('account_id',[15] )->sum('credit')  }}</td>
                         @else
                             <td>{{ $ca->ledgers->sum('credit') }}</td>
                         @endif
@@ -77,8 +77,12 @@
 
 
                                                 $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
-
-                                                echo ($sumCreditIncome + $unearnedServiceIncome) - $expensesTotal;
+//                                                print_r([
+//                                                    $sumCreditIncome,
+//                                                    $unearnedServiceIncome,
+//                                                    $expensesTotal
+//                                                ]);
+                                                echo ($sumCreditIncome ) - $expensesTotal;
                                                 ?>
                     </td>
                 </tr>
