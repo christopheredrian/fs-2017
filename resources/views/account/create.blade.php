@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="box">
         <div class="box-header">
             <h1>Create new Account</h1>
