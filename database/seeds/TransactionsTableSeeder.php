@@ -16,7 +16,8 @@ class TransactionsTableSeeder extends Seeder
         $transactions = [];
         $current_date = Carbon::now();
         $current_date->addDays(-30);
-        for ($i = 1; $i < 25; $i++) {
+        $dates = [1, 2, 3, 4, 5, 8, 9, 10, 15, 16, 20, 22, 23, 25, 26, 27, 28, 29, 30];
+        foreach ($dates as $i) {
             echo $current_date . "\n";
             $transactions[] = ['id' => $i, 'created_at' => $current_date];
             Transaction::insert(['id' => $i, 'created_at' => $current_date]);
