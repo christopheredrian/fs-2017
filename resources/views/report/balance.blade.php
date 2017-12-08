@@ -67,7 +67,14 @@
                     </tr>
                 @endforeach()
                 {{-- Non-Current Assets--}}
-                @foreach(\App\Account::where('type', 'Investment')->get() as $ca)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Non-current Assets</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach(\App\Account::where('type', 'Non-current Assets')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->type }}</td>
@@ -75,23 +82,23 @@
                         <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) }}</td>
                     </tr>
                 @endforeach()
-                @foreach(\App\Account::where('type', 'Intellectual Property')->get() as $ca)
-                    <tr>
-                        <td>{{ $ca->code }}</td>
-                        <td>{{ $ca->type }}</td>
-                        <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) }}</td>
-                    </tr>
-                @endforeach()
+                {{--@foreach(\App\Account::where('type', 'Intellectual Property')->get() as $ca)--}}
+                    {{--<tr>--}}
+                        {{--<td>{{ $ca->code }}</td>--}}
+                        {{--<td>{{ $ca->type }}</td>--}}
+                        {{--<td>{{ $ca->name }}</td>--}}
+                        {{--<td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) }}</td>--}}
+                    {{--</tr>--}}
+                {{--@endforeach()--}}
                 {{--Property, Plant and Equipment--}}
-                @foreach(\App\Account::where('type', 'Property, Plant and Equipment')->get() as $ca)
-                    <tr>
-                        <td>{{ $ca->code }}</td>
-                        <td>{{ $ca->type }}</td>
-                        <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) > 0 ? $ca->ledgers->sum('debit') : '' }}</td>
-                    </tr>
-                @endforeach()
+                {{--@foreach(\App\Account::where('type', 'Property, Plant and Equipment')->get() as $ca)--}}
+                    {{--<tr>--}}
+                        {{--<td>{{ $ca->code }}</td>--}}
+                        {{--<td>{{ $ca->type }}</td>--}}
+                        {{--<td>{{ $ca->name }}</td>--}}
+                        {{--<td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) > 0 ? $ca->ledgers->sum('debit') : '' }}</td>--}}
+                    {{--</tr>--}}
+                {{--@endforeach()--}}
                 <tr>
                     <td></td>
                     <td></td>
@@ -99,7 +106,7 @@
                     <td style="border-bottom: 1.2px double black; !important;">
                         <?php
 
-                        $types = ['Current Assets', 'Investment', 'Intellectual Property', 'Property, Plant and Equipment'];
+                        $types = ['Current Assets', 'Non-current Assets'];
                         $ids = \App\Account::whereIn('type', $types)->pluck('id');
                         $sumDebit = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
                         $sumCredit = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
@@ -111,7 +118,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td class="text-center">Liabilities</td>
+                    <td class="text-center">Liabilities and Capital</td>
                     <td></td>
                 </tr>
                 {{-- Current Liabilities --}}
@@ -126,22 +133,26 @@
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->type }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit'))  }}</td>
+                        @if(str_contains($ca->name, 'Service'))
+                            <td>{{ 0  }}</td>
+                        @else
+                            <td>{{ ( $ca->ledgers->sum('credit')) - $ca->ledgers->sum('debit')  }}</td>
+                        @endif
                     </tr>
                 @endforeach()
                 {{-- Long term Liabilities --}}
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Long Term Liabilities</td>
+                    <td class="text-center">Long Term Liabilities</td>
                     <td></td>
                 </tr>
-                @foreach(\App\Account::where('type', 'Long-term Liabilities')->get() as $ca)
+                @foreach(\App\Account::where('type', 'Non-Current Liabilities')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->type }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit'))  }}</td>
+                        <td>{{ ( $ca->ledgers->sum('credit')) - $ca->ledgers->sum('debit')  }}</td>
                     </tr>
                 @endforeach()
                 <tr>
@@ -151,11 +162,14 @@
                     <td style="border-bottom: 1.2px double black; !important;">
                         <?php
 
-                        $types = ['Current Liabilities', 'Long-term Liabilities'];
+                        $types = ['Current Liabilities', 'Non-Current Liabilities'];
                         $ids = \App\Account::whereIn('type', $types)->pluck('id');
                         $sumDebit = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
                         $sumCredit = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                        echo $sumDebit - $sumCredit;
+                        $totalLiab = $sumCredit - $sumDebit;
+                        $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
+
+                        echo  $totalLiab - $unearnedServiceIncome;
                         ?>
                     </td>
                 </tr>
@@ -171,24 +185,67 @@
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->type }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) > 0 ? $ca->ledgers->sum('debit') : '' }}</td>
+                        <td>
+                            <?php
+                                $capital = ( $ca->ledgers->sum('credit')) - $ca->ledgers->sum('debit');
+                                echo $capital;
+                            ?>
+                        </td>
                     </tr>
-                @endforeach()
-                {{-- Drawing --}}
+                @endforeach
                 <tr>
                     <td></td>
                     <td></td>
-                    <td class="text-center">Drawing</td>
-                    <td></td>
+                    <td>Add: Net Income</td>
+                    <td style="border-bottom: 1.2px double black; !important;">
+                        <!--                        --><?php
+                        $types = ['Expenses'];
+                        $ids = \App\Account::whereIn('type', $types)->pluck('id');
+                        $sumDebitExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
+                        $sumCreditExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
+                        $sumExpenses = $sumDebitExpenses - $sumCreditExpenses;
+
+                        $types = ['Income'];
+                        $ids = \App\Account::whereIn('type', $types)->pluck('id');
+                        $sumDebitIncome = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
+                        $sumCreditIncome = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
+                        $sumIncome = $sumCreditIncome;
+
+
+                        $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
+                        $netIncome = ($sumCreditIncome + $unearnedServiceIncome) - $sumExpenses;
+                        echo $netIncome;
+                        ?>
+                    </td>
                 </tr>
                 @foreach(\App\Account::where('type', 'Drawing')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->type }}</td>
-                        <td>{{ $ca->name }}</td>
-                        <td>{{ ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit')) }}</td>
+                        <td>Less: {{ $ca->name }}</td>
+                        <td>
+                            <?php
+                            $drawing = ($ca->ledgers->sum('debit') - $ca->ledgers->sum('credit'));
+                            echo $drawing;
+                            ?>
+                        </td>
                     </tr>
                 @endforeach()
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom: 1.2px double black; !important;">
+                        {{ $totalLiab + $capital - $drawing + $netIncome }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom: 1.2px double black; !important;">
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
