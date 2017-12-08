@@ -3,7 +3,7 @@
 @section('styles')
     <style>
         @media print {
-            footer, button.btn-danger{
+            footer, button.btn-danger {
                 display: none;
             }
         }
@@ -26,72 +26,35 @@
         </div>
         <div class="box-body">
             <table class="table table-hover">
-                {{--<thead>--}}
-                {{--<tr>--}}
-                    {{--<th>Code</th>--}}
-                    {{--<th>Account</th>--}}
-                    {{--<th></th>--}}
-                    {{--<th></th>--}}
-                {{--</tr>--}}
-                {{--</thead>--}}
+
                 <tbody>
                 @foreach(\App\Account::where('type', 'Income')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
                         <td></td>
-                        <td>{{ $ca->ledgers->sum('debit') }}</td>
+                        @if(str_contains($ca->name, 'Service'))
+                            <td>{{ \App\Ledger::whereIn('account_id',[15, 11] )->sum('credit')  }}</td>
+                        @else
+                            <td>{{ $ca->ledgers->sum('credit') }}</td>
+                        @endif
                     </tr>
                 @endforeach
-                <tr>
-                    <td></td>
-                    <td>Net Income:</td>
-                    <td></td>
-                    <td style="border-bottom: 1.2px double black; !important;">
-                        <?php
-                        $types = ['Income'];
-                        $ids = \App\Account::whereIn('type', $types)->pluck('id');
-                        $sumDebit = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
-                        echo $sumDebit;
-                        ?>
-                    </td>
-                </tr>
-                @foreach(\App\Account::where('type', 'Income')->get() as $ca)
-                    <tr>
-                        <td>{{ $ca->code }}</td>
-                        <td>Less: {{ $ca->name }}</td>
-                        <td>{{ $ca->ledgers->sum('credit') }}</td>
-                        <td></td>
-                    </tr>
-                @endforeach
-                <tr>
-                    <td></td>
-                    <td>Gross Income:</td>
-                    <td></td>
-                    <td style="border-bottom: 1.2px double black; !important;">
-                        <?php
-                        $types = ['Income'];
-                        $ids = \App\Account::whereIn('type', $types)->pluck('id');
-                        $sumDebit = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
-                        $sumCredit = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                        $sumIncome = $sumDebit - $sumCredit;
-                        echo $sumIncome;
-                        ?>
-                    </td>
-                </tr>
-                {{-- Expenses --}}
+
                 <tr>
                     <td></td>
                     <td>Less: Expenses</td>
                     <td></td>
                     <td></td>
                 </tr>
+                <?php $expensesTotal = 0; ?>
                 @foreach(\App\Account::where('type', 'Expenses')->get() as $ca)
+                    <?php $expensesTotal += ($ca->ledgers->sum('debit'))?>
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td></td>
                         <td>{{ $ca->ledgers->sum('debit') }}</td>
+                        <td></td>
                     </tr>
                 @endforeach
                 <tr>
@@ -99,14 +62,24 @@
                     <td>Net Income/ (Loss)</td>
                     <td></td>
                     <td style="border-bottom: 1.2px double black; !important;">
-                        <?php
-                        $types = ['Expenses'];
-                        $ids = \App\Account::whereIn('type', $types)->pluck('id');
-                        $sumDebitExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
-                        $sumCreditExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                        $sumExpenses = $sumDebitExpenses - $sumCreditExpenses;
-                        echo $sumIncome - $sumExpenses;
-                        ?>
+                        <!--                        --><?php
+                                                $types = ['Expenses'];
+                                                $ids = \App\Account::whereIn('type', $types)->pluck('id');
+                                                $sumDebitExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
+                                                $sumCreditExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
+                                                $sumExpenses = $sumDebitExpenses - $sumCreditExpenses;
+
+                                                $types = ['Income'];
+                                                $ids = \App\Account::whereIn('type', $types)->pluck('id');
+                                                $sumDebitIncome = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
+                                                $sumCreditIncome = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
+                                                $sumIncome = $sumCreditIncome;
+
+
+                                                $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
+
+                                                echo ($sumCreditIncome + $unearnedServiceIncome) - $expensesTotal;
+                                                ?>
                     </td>
                 </tr>
                 <tr>

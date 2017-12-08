@@ -41,8 +41,8 @@ class LedgersTableSeeder extends Seeder
             print_r($data);
             print_r($data[1]);
             Ledger::insert([
-                'debit' => floatval($data[3]),
-                'credit' => floatval($data[4]),
+                'debit' => (double)$data[3],
+                'credit' => (double)$data[4],
                 'account_id' => \App\Account::where('code', $data[2])->first()->id,
                 'transaction_id' => $data[0]
             ]);
