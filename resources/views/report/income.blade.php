@@ -14,7 +14,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h2 class="text-center">Baguio City Hall <br>
+            <h2 class="text-center">Psalmist Music Center <br>
                 Income Statement <br>
                 For the period of {{ $start }} to {{ $end }}
             </h2>

@@ -44,17 +44,18 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-red sidebar-mini fixed">
+<body class="hold-transition skin-yellow sidebar-mini fixed">
 <div class="wrapper">
 
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/about" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>FS</b>Project</span>
+            <span class="logo-mini"><b>MC</b>Psalmist</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>FS</b>Project</span>
+            <span class="logo-lg"><b>Psalmist</b>Music Center</span>
+
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->

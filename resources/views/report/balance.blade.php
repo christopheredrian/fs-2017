@@ -20,7 +20,7 @@
     <div class="box">
         <div class="box-header">
             <h2 class="text-center">
-                Baguio City Hall <br>
+                Psalmist Music Center <br>
                 Balance Sheet<br>
                 as of {{ \Carbon\Carbon::now()->toFormattedDateString() }}
             </h2>
