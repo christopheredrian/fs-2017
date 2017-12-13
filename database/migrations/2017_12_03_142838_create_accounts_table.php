@@ -18,9 +18,8 @@ class CreateAccountsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->enum('type', [
-                'Current Assets', 'Non-current Assets', 'Contra-asset',
-                'Current Liabilities','Non-Current Liabilities', 'Capital',
-                'Drawing','Income','Expenses'
+                'CA', 'PPE', 'CL',
+                'Cap','INC', 'Expenses'
             ]);
             $table->timestamps();
         });
