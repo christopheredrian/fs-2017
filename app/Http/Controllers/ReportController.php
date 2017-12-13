@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
 use App\Ledger;
 use App\Transaction;
 use Carbon\Carbon;
@@ -16,9 +17,25 @@ class ReportController extends Controller
      */
     public function income()
     {
+        $types = ['Inc'];
+        $ids = Account::whereIn('type', $types)->pluck('id');
+        $sumDebitIncome = Ledger::whereIn('account_id', $ids)->sum('debit');
+        $sumCreditIncome = Ledger::whereIn('account_id', $ids)->sum('credit');
+        $income = $sumCreditIncome - $sumDebitIncome;
+
+        $unearnedServiceIncome = Account::where('code','305')->first()->ledgers->sum('credit');
+
+
+        $types = ['Expenses'];
+        $ids = Account::whereIn('type', $types)->pluck('id');
+        $sumDebitExpenses = Ledger::whereIn('account_id', $ids)->sum('debit');
+        $sumCreditExpenses = Ledger::whereIn('account_id', $ids)->sum('credit');
+        $expenses = $sumDebitExpenses - $sumCreditExpenses;
         return view('report.income', [
             'start' => Transaction::orderBy('created_at','asc')->first()->created_at->toFormattedDateString(),
             'end' => Transaction::orderBy('created_at', 'desc')->first()->created_at->toFormattedDateString(),
+            'income' => $income + $unearnedServiceIncome,
+            'expenses' => $expenses
         ]);
     }
 

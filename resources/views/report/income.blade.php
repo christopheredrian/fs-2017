@@ -28,7 +28,7 @@
             <table class="table table-hover">
 
                 <tbody>
-                @foreach(\App\Account::where('type', 'Income')->get() as $ca)
+                @foreach(\App\Account::where('type', 'Inc')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
@@ -62,28 +62,7 @@
                     <td>Net Income/ (Loss)</td>
                     <td></td>
                     <td style="border-bottom: 1.2px double black; !important;">
-                        <!--                        --><?php
-                                                $types = ['Expenses'];
-                                                $ids = \App\Account::whereIn('type', $types)->pluck('id');
-                                                $sumDebitExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
-                                                $sumCreditExpenses = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                                                $sumExpenses = $sumDebitExpenses - $sumCreditExpenses;
-
-                                                $types = ['Income'];
-                                                $ids = \App\Account::whereIn('type', $types)->pluck('id');
-                                                $sumDebitIncome = \App\Ledger::whereIn('account_id', $ids)->sum('debit');
-                                                $sumCreditIncome = \App\Ledger::whereIn('account_id', $ids)->sum('credit');
-                                                $sumIncome = $sumCreditIncome;
-
-
-                                                $unearnedServiceIncome =  \App\Ledger::where('account_id',[11] )->sum('credit');
-//                                                print_r([
-//                                                    $sumCreditIncome,
-//                                                    $unearnedServiceIncome,
-//                                                    $expensesTotal
-//                                                ]);
-                                                echo ($sumCreditIncome ) - $expensesTotal;
-                                                ?>
+                      {{ $income - $expenses }}
                     </td>
                 </tr>
                 <tr>
