@@ -15,7 +15,8 @@ class LedgerController extends Controller
     public function index()
     {
         return view('ledger.index',[
-            'transactions' => Transaction::all()
+            'transactions' => Transaction::all(),
+            'sql_queries' => [Transaction::toSql()]
         ]);
     }
 

@@ -28,6 +28,12 @@
             display: inline;
         }
 
+        @media print {
+            #sql-box {
+                display: none;
+            }
+        }
+
     </style>
 @yield('styles')
 
@@ -103,7 +109,7 @@
                     </li>
                     <!-- Control Sidebar Toggle Button -->
                     {{--<li>--}}
-                        {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
+                    {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
                     {{--</li>--}}
                 </ul>
             </div>
@@ -210,6 +216,30 @@
                     <ul class="alert {{ Session::has('red') ? 'alert-danger' : 'alert-success' }}">
                         <li style="list-style: none;">{{ Session::get('flash_message') }}</li>
                     </ul>
+                @endif
+
+                @if(\Illuminate\Support\Facades\DB::getQueryLog())
+                    <div class="box" id="sql-box">
+                        <div class="box-header">
+                            <h3>Executed SQL query for this page
+                                <button class="btn btn-xs btn-info" data-toggle="collapse" data-target="#queries">Show
+                                    Queries
+                                </button>
+                            </h3>
+
+                        </div>
+                        <div class="box-body collapse" id="queries">
+                            <div class="col-xs-12">
+                                <code>
+                                    @foreach(\Illuminate\Support\Facades\DB::getQueryLog() as $log)
+
+                                        <pre> {!!   $log['query']  !!}
+                    <strong>Parameters: </strong> [{!! implode(',',$log['bindings']) !!}]</pre>
+                                    @endforeach
+                                </code>
+                            </div>
+                        </div>
+                    </div>
                 @endif
                 @yield('content')
             </div>

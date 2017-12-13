@@ -7,7 +7,7 @@ use App\Ledger;
 use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class ReportController extends Controller
 {
     /**
@@ -17,6 +17,7 @@ class ReportController extends Controller
      */
     public function income()
     {
+        $sql_queries = [];
         $types = ['Inc'];
         $ids = Account::whereIn('type', $types)->pluck('id');
         $sumDebitIncome = Ledger::whereIn('account_id', $ids)->sum('debit');
@@ -31,11 +32,12 @@ class ReportController extends Controller
         $sumDebitExpenses = Ledger::whereIn('account_id', $ids)->sum('debit');
         $sumCreditExpenses = Ledger::whereIn('account_id', $ids)->sum('credit');
         $expenses = $sumDebitExpenses - $sumCreditExpenses;
+
         return view('report.income', [
             'start' => Transaction::orderBy('created_at','asc')->first()->created_at->toFormattedDateString(),
             'end' => Transaction::orderBy('created_at', 'desc')->first()->created_at->toFormattedDateString(),
             'income' => $income + $unearnedServiceIncome,
-            'expenses' => $expenses
+            'expenses' => $expenses,
         ]);
     }
 
