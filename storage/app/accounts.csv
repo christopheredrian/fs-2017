@@ -12,17 +12,17 @@
 235,PPE,Accumulated Depreciation - Machineries,235
 300,CL,Accounts Payable,300
 305,CL,Unearned Service Income,305
-400,NCL,Notes Payable,400
-500,Cap,"Owner, Capital",500
-505,Cap,"Owner, Drawing",505
-600,INC,Service Income,600
-700,Expenses,Rent Expense,700
-705,Expenses,Advertising Expense,705
-710,Expenses,Taxes and licenses,710
-715,Expenses,Supplies Expense,715
-720,Expenses,Utilities Expense,720
-725,Expenses,Salaries Expense,725
-730,Expenses,Communication Expense,730
-735,Expenses,Depreciation Expense,735
-740,Expenses,Service Expense,740
-745,Expenses,Maintenance Expense,745
+310,CL,Notes Payable,310
+400,Cap,"Owner, Capital",400
+405,Cap,"Owner, Drawing",405
+500,INC,Service Income,500
+600,Expenses,Rent Expense,600
+605,Expenses,Advertising Expense,605
+610,Expenses,Taxes and licenses,610
+615,Expenses,Supplies Expense,615
+620,Expenses,Utilities Expense,620
+625,Expenses,Salaries Expense,625
+630,Expenses,Communication Expense,630
+635,Expenses,Depreciation Expense,635
+640,Expenses,Service Expense,640
+645,Expenses,Maintenance Expense,645

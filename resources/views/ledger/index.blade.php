@@ -6,7 +6,7 @@
             margin-bottom: 1.7%;
         }
 
-        table tr td:last-child, td:nth-last-child(2){
+        table tr td:last-child, td:nth-last-child(2) {
             text-align: right;
         }
     </style>
@@ -24,6 +24,18 @@
                     <a class="btn btn-success" href="{{ route('journals.create')}}">Post new entry</a>
                 </div>
             </div>
+            <div class="row">
+                <form action="" method="get" class="col-xs-4 pull-right">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button type="submit"  id="search-btn" class="btn btn-flat"><i
+                                        class="fa fa-search"></i>
+                            </button>
+                         </span>
+                    </div>
+                </form>
+            </div>
             <table id="data-table" class="table table-striped table-condensed table-bordered table-responsive">
                 <thead>
                 <tr>
@@ -36,30 +48,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($transactions as $transaction)
-                    @foreach($transaction->ledgers as $ledger)
+                    @foreach($transactions as $item)
                         <tr>
-                            <td>{{ $transaction->id }}</td>
-                            <td>{{ $transaction->created_at->toDateString() }}
-                            </td>
-                            <td>{{ $ledger->account->code }}</td>
-                            <td>{{ $ledger->account->name }}</td>
-                            <td>{{ number_format($ledger->debit) == 0 ?  '' : number_format($ledger->debit) }}</td>
-                            <td>{{ number_format($ledger->credit) == 0 ? '': number_format($ledger->credit) }}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->created_at }} </td>
+                            <td>{{ $item->code }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->debit == 0 ?  '' : number_format($item->debit) }}</td>
+                            <td>{{ number_format($item->credit) == 0 ? '': number_format($item->credit) }}</td>
                         </tr>
                     @endforeach
-                @endforeach
                 </tbody>
             </table>
+            <div class="pull-right">
+                {{ $transactions->appends(['q' => $q])->links() }}
+            </div>
         </div>
     </div>
 
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
-            $('#data-table').DataTable();
-        });
-    </script>
+    {{--<script>--}}
+    {{--$(document).ready(function(){--}}
+    {{--$('#data-table').DataTable();--}}
+    {{--});--}}
+    {{--</script>--}}
 @endsection
