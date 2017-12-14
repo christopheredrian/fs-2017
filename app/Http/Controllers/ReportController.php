@@ -49,7 +49,7 @@ class ReportController extends Controller
      */
     public function balance()
     {
-        // CA, PPE, CL, CAP
+        // CA, PPE, CL, CAP, NCL
 
         $ca = Account::where('type', 'CA')->get();
         $ppe = Account::where('type', 'PPE')->get();

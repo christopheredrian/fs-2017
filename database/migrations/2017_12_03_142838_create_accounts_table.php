@@ -18,7 +18,7 @@ class CreateAccountsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->enum('type', [
-                'CA', 'PPE', 'CL',
+                'CA', 'PPE', 'CL', 'NCL',
                 'Cap','INC', 'Expenses'
             ]);
             $table->timestamps();

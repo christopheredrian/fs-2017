@@ -1,0 +1,28 @@
+100,CA,Cash,100
+105,CA,Prepaid Rent,105
+110,CA,Prepaid Service,110
+115,CA,Supplies,115
+200,PPE,Furniture,200
+205,PPE,Accumulated Depreciation - Furniture,205
+210,PPE,Musical Instrument,210
+215,PPE,Accumulated Depreciation - Musical Instrument,215
+220,PPE,Office Equipment,220
+225,PPE,Accumulated Depreciation - Office Equipment,225
+230,PPE,Machineries,230
+235,PPE,Accumulated Depreciation - Machineries,235
+300,CL,Accounts Payable,300
+305,CL,Unearned Service Income,305
+400,NCL,Notes Payable,400
+500,Cap,"Owner, Capital",500
+505,Cap,"Owner, Drawing",505
+600,INC,Service Income,600
+700,Expenses,Rent Expense,700
+705,Expenses,Advertising Expense,705
+710,Expenses,Taxes and licenses,710
+715,Expenses,Supplies Expense,715
+720,Expenses,Utilities Expense,720
+725,Expenses,Salaries Expense,725
+730,Expenses,Communication Expense,730
+735,Expenses,Depreciation Expense,735
+740,Expenses,Service Expense,740
+745,Expenses,Maintenance Expense,745

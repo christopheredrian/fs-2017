@@ -60,7 +60,6 @@
                     <td></td>
                     <td>Current Assets</td>
                     <td></td>
-                    <td></td>
                 </tr>
                 @foreach(\App\Account::where('type', 'CA')->get() as $item)
                     <tr>
@@ -76,7 +75,6 @@
                     <td></td>
                     <td></td>
                     <td>Non-current Assets</td>
-                    <td></td>
                     <td></td>
                 </tr>
                 @foreach(\App\Account::where('type', 'PPE')->get() as $item)
@@ -103,6 +101,12 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Liabilities</td>
+                    <td></td>
+                </tr>
                 @foreach(\App\Account::where('type', 'CL')->get() as $item)
                     <tr>
                         <td> {{ $item->code }}</td>
@@ -113,7 +117,12 @@
                 @endforeach()
 
                 {{-- Capital and Drawing --}}
-
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Capital and Drawing</td>
+                    <td></td>
+                </tr>
                 @foreach(\App\Account::where('type', 'Cap')->get() as $item)
                     <tr>
                         <td> {{ $item->code }}</td>

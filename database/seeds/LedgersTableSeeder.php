@@ -40,11 +40,15 @@ class LedgersTableSeeder extends Seeder
         while (($data = fgetcsv($file, 200, ",")) !== FALSE) {
             echo "\nDATA (# $counter):\n";
             print_r($data);
+            if ($data[0]){
+                $date = $data[0] . ' 1 2016';
+                $month = date('m', strtotime($date));
+            }
             if ($data[1]) {
                 $current_transaction = new Transaction();
                 $date = new \Carbon\Carbon();
                 $date->year = 2016;
-                $date->month = (int)$data[0];
+                $date->month = $month;
                 $date->day = (int)$data[1];
                 $current_transaction->created_at = $date;
                 $current_transaction->save();
@@ -60,6 +64,7 @@ class LedgersTableSeeder extends Seeder
                     'debit' => floatval($data[5]),
                     'credit' => 0,
                     'account_id' => \App\Account::where('code', $data[4])->first()->id,
+//                    'account_id' => \App\Account::where('name', trim($data[2]))->first()->id,
                     'transaction_id' => $t_id
                 ]);
                 // if credit
@@ -68,7 +73,8 @@ class LedgersTableSeeder extends Seeder
                 Ledger::insert([
                     'debit' => 0,
                     'credit' => floatval($data[6]),
-                    'account_id' => \App\Account::where('code', $data[4])->first()->id,
+                      'account_id' => \App\Account::where('code', $data[4])->first()->id,
+//                    'account_id' => \App\Account::where('name', trim($data[3]))->first()->id,
                     'transaction_id' => $t_id
                 ]);
             }

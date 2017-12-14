@@ -1,0 +1,38 @@
+1,Cash,110,800000,
+1,"Owner, Capital",610,,800000
+2,Cash,110,200000,
+2,Notes Payable,510,,200000
+3,Furniture,210,80000,
+3,      Cash,110,,80000
+4,Advertising expense,820,10000,
+4,       Cash,110,,10000
+5,Communication expense,870,3000,
+5,         Cash,110,,3000
+8,Rent Expense,810,60000,
+8,       Cash,110,,60000
+9,Musical Instruments,220,200000,
+9,        Cash,110,,200000
+10,  Office equipment,230,150000,
+10,      Accounts Payable,410,,150000
+15,Musical Instruments,220,300000,
+15,       Cash,110,,300000
+16,Taxes and licenses,830,3000,
+16,      Cash,110,,3000
+20,Cash,110,60000,
+20,       Unearned service income,420,,60000
+22,Cash,110,50000,
+22,       Unearned service income,420,,50000
+23,Accounts Payable,410,150000,
+23,      Cash,110,,150000
+25,Supplies ,130,20000,
+25,     Cash,110,,20000
+26,Utilities Expense,850,6000,
+26,     Cash,110,,6000
+27,Accounts Receivable,120,100000,
+27,       Service income,710,,100000
+28,"Owner, Drawing",620,5000,
+28,         Cash,110,,5000
+29,Cash,110,100000,
+29,       Accounts Receivable,120,,100000
+30,Salaries Expense,860,50000,
+30,       Cash,110,,50000

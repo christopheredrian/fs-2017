@@ -5,6 +5,10 @@
         .row {
             margin-bottom: 1.7%;
         }
+
+        table tr td:last-child, td:nth-last-child(2){
+            text-align: right;
+        }
     </style>
 @endsection
 

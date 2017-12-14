@@ -7,6 +7,10 @@
                 display: none;
             }
         }
+
+        table tr td:last-child, td:nth-last-child(2){
+            text-align: right;
+        }
     </style>
 @endsection
 
@@ -33,11 +37,11 @@
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
                         <td></td>
-                        @if(str_contains($ca->name, 'Service'))
-                            <td>{{ \App\Ledger::whereIn('account_id',[15] )->sum('credit')  }}</td>
-                        @else
-                            <td>{{ $ca->ledgers->sum('credit') }}</td>
-                        @endif
+                        {{--@if(str_contains($ca->name, 'Service'))--}}
+                            {{--<td>{{ \App\Ledger::whereIn('account_id',[15] )->sum('credit')  }}</td>--}}
+                        {{--@else--}}
+                            <td>{{ $ca->ledgers->sum('credit') - $ca->ledgers->sum('debit') }}</td>
+                        {{--@endif--}}
                     </tr>
                 @endforeach
 
@@ -53,7 +57,7 @@
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td>{{ $ca->ledgers->sum('debit') }}</td>
+                        <td>{{ $ca->ledgers->sum('debit') - $ca->ledgers->sum('credit') }}</td>
                         <td></td>
                     </tr>
                 @endforeach
