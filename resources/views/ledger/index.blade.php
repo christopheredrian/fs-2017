@@ -44,8 +44,8 @@
                             </td>
                             <td>{{ $ledger->account->code }}</td>
                             <td>{{ $ledger->account->name }}</td>
-                            <td>{{ $ledger->debit == 0 ? '': $ledger->debit }}</td>
-                            <td>{{ $ledger->credit == 0 ? '': $ledger->credit }}</td>
+                            <td>{{ number_format($ledger->debit) == 0 ?  '' : number_format($ledger->debit) }}</td>
+                            <td>{{ number_format($ledger->credit) == 0 ? '': number_format($ledger->credit) }}</td>
                         </tr>
                     @endforeach
                 @endforeach

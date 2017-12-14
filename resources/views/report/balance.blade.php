@@ -6,12 +6,12 @@
             border: none;
         }
 
-        table tr td:nth-child(4){
+        table tr td:nth-child(4) {
             text-align: right;
         }
 
         @media print {
-            footer, button.btn-danger{
+            footer, button.btn-danger {
                 display: none;
             }
         }
@@ -39,10 +39,10 @@
             <table class="table table-hover">
                 {{--<thead>--}}
                 {{--<tr>--}}
-                    {{--<th>Code</th>--}}
-                    {{--<th>Type</th>--}}
-                    {{--<th>Account</th>--}}
-                    {{--<th>Total</th>--}}
+                {{--<th>Code</th>--}}
+                {{--<th>Type</th>--}}
+                {{--<th>Account</th>--}}
+                {{--<th>Total</th>--}}
                 {{--</tr>--}}
                 {{--</thead>--}}
                 <tbody>
@@ -61,12 +61,20 @@
                     <td>Current Assets</td>
                     <td></td>
                 </tr>
+                <?php
+                $assets = 0;
+                $liabilities_and_capital = 0;
+                ?>
                 @foreach(\App\Account::where('type', 'CA')->get() as $item)
                     <tr>
+                        <?php
+                        $ca = ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit')));
+                        $assets += $ca;
+                        ?>
                         <td> {{ $item->code }}</td>
                         <td> {{ $item->type }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
+                        <td>{{ number_format($ca)  }} </td>
                     </tr>
                 @endforeach()
 
@@ -79,10 +87,15 @@
                 </tr>
                 @foreach(\App\Account::where('type', 'PPE')->get() as $item)
                     <tr>
+                        <?php
+                        $ppe = ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit')));
+                        $assets += $ppe;
+
+                        ?>
                         <td> {{ $item->code }}</td>
                         <td> {{ $item->type }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
+                        <td>{{ $ppe < 0 ? 'Less: ': '' }}{{ $item->name }}</td>
+                        <td>{{ number_format(abs($ppe)) }} </td>
                     </tr>
                 @endforeach()
                 <tr>
@@ -90,7 +103,14 @@
                     <td></td>
                     <td>Total Assets</td>
                     <td style="border-bottom: 1.2px double black; !important;">
-                        {{ '0' }}
+                        {{ number_format($assets) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom: 1.2px double black; !important;">
                     </td>
                 </tr>
                 {{-- Liabilities --}}
@@ -107,12 +127,16 @@
                     <td>Liabilities</td>
                     <td></td>
                 </tr>
-                @foreach(\App\Account::where('type', 'CL')->get() as $item)
+                @foreach(\App\Account::where('type', 'CL')->orWhere('type', 'NCL')->get() as $item)
                     <tr>
+                        <?php
+                        $liabilities = ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit')));
+                        $liabilities_and_capital += $liabilities;
+                        ?>
                         <td> {{ $item->code }}</td>
                         <td> {{ $item->type }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit'))) }} </td>
+                        <td>{{ number_format($liabilities )}} </td>
                     </tr>
                 @endforeach()
 
@@ -125,10 +149,14 @@
                 </tr>
                 @foreach(\App\Account::where('type', 'Cap')->get() as $item)
                     <tr>
+                        <?php
+                        $capital = ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit')));
+                        $liabilities_and_capital += $capital;
+                        ?>
                         <td> {{ $item->code }}</td>
                         <td> {{ $item->type }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit'))) }} </td>
+                        <td>{{ $capital < 0 ? 'Less: ': '' }}{{ $item->name }}</td>
+                        <td>{{  number_format(abs($capital)) }} </td>
                     </tr>
                 @endforeach()
                 <tr>
@@ -136,15 +164,7 @@
                     <td></td>
                     <td>Total Liabilities and Capital</td>
                     <td style="border-bottom: 1.2px double black; !important;">
-                        {{ '0' }}
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td style="border-bottom: 1.2px double black; !important;">
-                        {{ '0' }}
+                        {{ number_format($liabilities_and_capital + $net) }}
                     </td>
                 </tr>
                 <tr>

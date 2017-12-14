@@ -32,6 +32,10 @@
             <table class="table table-hover">
 
                 <tbody>
+                <?php
+                $income = 0;
+                $expenses = 0;
+                ?>
                 @foreach(\App\Account::where('type', 'Inc')->get() as $ca)
                     <tr>
                         <td>{{ $ca->code }}</td>
@@ -40,7 +44,13 @@
                         {{--@if(str_contains($ca->name, 'Service'))--}}
                             {{--<td>{{ \App\Ledger::whereIn('account_id',[15] )->sum('credit')  }}</td>--}}
                         {{--@else--}}
-                            <td>{{ $ca->ledgers->sum('credit') - $ca->ledgers->sum('debit') }}</td>
+                        <?php
+
+                        $current = $ca->ledgers->sum('credit') - $ca->ledgers->sum('debit');
+                        $income += $current;
+
+                        ?>
+                            <td>{{ number_format($current) }}</td>
                         {{--@endif--}}
                     </tr>
                 @endforeach
@@ -51,13 +61,20 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <?php $expensesTotal = 0; ?>
+
                 @foreach(\App\Account::where('type', 'Expenses')->get() as $ca)
-                    <?php $expensesTotal += ($ca->ledgers->sum('debit'))?>
+
+
                     <tr>
                         <td>{{ $ca->code }}</td>
                         <td>{{ $ca->name }}</td>
-                        <td>{{ $ca->ledgers->sum('debit') - $ca->ledgers->sum('credit') }}</td>
+                        <?php
+
+                        $current = $ca->ledgers->sum('debit') - $ca->ledgers->sum('credit');
+                        $expenses += $current;
+
+                        ?>
+                        <td>{{ number_format($current) }}</td>
                         <td></td>
                     </tr>
                 @endforeach
@@ -66,7 +83,7 @@
                     <td>Net Income/ (Loss)</td>
                     <td></td>
                     <td style="border-bottom: 1.2px double black; !important;">
-                      {{ $income - $expenses }}
+                      {{ number_format($income - $expenses) }}
                     </td>
                 </tr>
                 <tr>

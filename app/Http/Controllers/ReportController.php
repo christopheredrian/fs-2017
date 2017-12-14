@@ -51,12 +51,23 @@ class ReportController extends Controller
     {
         // CA, PPE, CL, CAP, NCL
 
-        $ca = Account::where('type', 'CA')->get();
-        $ppe = Account::where('type', 'PPE')->get();
+        $types = ['Inc'];
+        $ids = Account::whereIn('type', $types)->pluck('id');
+        $sumDebitIncome = Ledger::whereIn('account_id', $ids)->sum('debit');
+        $sumCreditIncome = Ledger::whereIn('account_id', $ids)->sum('credit');
+        $income = $sumCreditIncome - $sumDebitIncome;
 
+        //  $unearnedServiceIncome = Account::where('code', '305')->first()->ledgers->sum('credit');
+
+        $types = ['Expenses'];
+        $ids = Account::whereIn('type', $types)->pluck('id');
+        $sumDebitExpenses = Ledger::whereIn('account_id', $ids)->sum('debit');
+        $sumCreditExpenses = Ledger::whereIn('account_id', $ids)->sum('credit');
+        $expenses = $sumDebitExpenses - $sumCreditExpenses;
+
+        $net = $income - $expenses;
         return view('report.balance', [
-            'ca' => $ca,
-            'ppe' => $ppe
+            'net' => $net
         ]);
     }
 
