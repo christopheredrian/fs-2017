@@ -62,26 +62,15 @@
                     <td></td>
                     <td></td>
                 </tr>
-                @foreach($ca as $item)
-                    @if(($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) >= 0 )
+                @foreach(\App\Account::where('type', 'CA')->get() as $item)
                     <tr>
                         <td> {{ $item->code }}</td>
                         <td> {{ $item->type }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
                     </tr>
-                    @endif
                 @endforeach()
-                @foreach($ca as $item)
-                    @if(($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) < 0 )
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> Less: {{ $item->name }}</td>
-                            <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
-                        </tr>
-                    @endif
-                @endforeach()
+
                 {{-- Non-Current Assets--}}
                 <tr>
                     <td></td>
@@ -90,27 +79,57 @@
                     <td></td>
                     <td></td>
                 </tr>
-                @foreach($ppe as $item)
-                    @if(($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) > 0 )
-                        <tr>
-                            <td> {{ $item->code }}</td>
-                            <td> {{ $item->type }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
-                        </tr>
-                    @endif
+                @foreach(\App\Account::where('type', 'PPE')->get() as $item)
+                    <tr>
+                        <td> {{ $item->code }}</td>
+                        <td> {{ $item->type }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
+                    </tr>
                 @endforeach()
-                @foreach($ppe as $item)
-                    @if(($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) <= 0 )
-                        <tr>
-                            <td> {{ $item->code }}</td>
-                            <td> {{ $item->type }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ ($item->ledgers->sum('debit') - ($item->ledgers->sum('credit'))) }} </td>
-                        </tr>
-                    @endif
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total Assets</td>
+                    <td style="border-bottom: 1.2px double black; !important;">
+                        {{ '0' }}
+                    </td>
+                </tr>
+                {{-- Liabilities --}}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-center">Liabilities and Capital</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach(\App\Account::where('type', 'CL')->get() as $item)
+                    <tr>
+                        <td> {{ $item->code }}</td>
+                        <td> {{ $item->type }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit'))) }} </td>
+                    </tr>
                 @endforeach()
 
+                {{-- Capital and Drawing --}}
+
+                @foreach(\App\Account::where('type', 'Cap')->get() as $item)
+                    <tr>
+                        <td> {{ $item->code }}</td>
+                        <td> {{ $item->type }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit'))) }} </td>
+                    </tr>
+                @endforeach()
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Total Liabilities and Capital</td>
+                    <td style="border-bottom: 1.2px double black; !important;">
+                        {{ '0' }}
+                    </td>
+                </tr>
                 <tr>
                     <td></td>
                     <td></td>
