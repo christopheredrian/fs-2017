@@ -50,7 +50,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td class="text-center">Assets</td>
+                    <td class="text-center"><strong>Assets</strong></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -58,7 +58,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Current Assets</td>
+                    <td><strong>Current Assets</strong></td>
                     <td></td>
                 </tr>
                 <?php
@@ -82,7 +82,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Non-current Assets</td>
+                    <td><strong>Non-current Assets</strong></td>
                     <td></td>
                 </tr>
                 @foreach(\App\Account::where('type', 'PPE')->get() as $item)
@@ -101,7 +101,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Total Assets</td>
+                    <td><strong>Total Assets</strong></td>
                     <td style="border-bottom: 1.2px double black; !important;">
                         {{ number_format($assets) }}
                     </td>
@@ -117,17 +117,23 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td class="text-center">Liabilities and Capital</td>
+                    <td class="text-center"><strong>Liabilities and Capital</strong></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Liabilities</td>
+                    <td><strong>Liabilities</strong></td>
                     <td></td>
                 </tr>
-                @foreach(\App\Account::where('type', 'CL')->orWhere('type', 'NCL')->get() as $item)
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Current Liabilities</strong></td>
+                    <td></td>
+                </tr>
+                @foreach(\App\Account::where('type', 'CL')->get() as $item)
                     <tr>
                         <?php
                         $liabilities = ($item->ledgers->sum('credit') - ($item->ledgers->sum('debit')));
@@ -144,7 +150,7 @@
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Capital and Drawing</td>
+                    <td class="text-center"><strong>Capital</strong></td>
                     <td></td>
                 </tr>
                 @foreach(\App\Account::where('type', 'Cap')->get() as $item)
@@ -159,10 +165,17 @@
                         <td>{{  number_format(abs($capital)) }} </td>
                     </tr>
                 @endforeach()
+                {{-- Net income --}}
                 <tr>
                     <td></td>
                     <td></td>
-                    <td>Total Liabilities and Capital</td>
+                    <td>Add: Net Income </td>
+                    <td>{{ number_format($net) }}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><strong>Total Liabilities and Capital</strong></td>
                     <td style="border-bottom: 1.2px double black; !important;">
                         {{ number_format($liabilities_and_capital + $net) }}
                     </td>
