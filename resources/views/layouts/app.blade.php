@@ -221,8 +221,8 @@
                 @if(\Illuminate\Support\Facades\DB::getQueryLog())
                     <div class="box" id="sql-box">
                         <div class="box-header">
-                            <h3>Executed SQL query for this page
-                                <button class="btn btn-xs btn-info" data-toggle="collapse" data-target="#queries">Show
+                            <h3>Executed SQL query for this page:
+                                 <button class="btn btn-sm btn-info" data-toggle="collapse" data-target="#queries">Show
                                     Queries
                                 </button>
                             </h3>
@@ -234,7 +234,7 @@
                                     @foreach(\Illuminate\Support\Facades\DB::getQueryLog() as $log)
 
                                         <pre> {!!   $log['query']  !!}
-                    <strong>Parameters: </strong> [{!! implode(',',$log['bindings']) !!}]</pre>
+                    <strong>Parameter Bindings: </strong> [{!! implode(',',$log['bindings']) !!}]</pre>
                                     @endforeach
                                 </code>
                             </div>

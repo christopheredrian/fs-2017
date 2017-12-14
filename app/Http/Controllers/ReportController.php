@@ -8,6 +8,7 @@ use App\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class ReportController extends Controller
 {
     /**
@@ -24,7 +25,7 @@ class ReportController extends Controller
         $sumCreditIncome = Ledger::whereIn('account_id', $ids)->sum('credit');
         $income = $sumCreditIncome - $sumDebitIncome;
 
-        $unearnedServiceIncome = Account::where('code','305')->first()->ledgers->sum('credit');
+        $unearnedServiceIncome = Account::where('code', '305')->first()->ledgers->sum('credit');
 
 
         $types = ['Expenses'];
@@ -34,7 +35,7 @@ class ReportController extends Controller
         $expenses = $sumDebitExpenses - $sumCreditExpenses;
 
         return view('report.income', [
-            'start' => Transaction::orderBy('created_at','asc')->first()->created_at->toFormattedDateString(),
+            'start' => Transaction::orderBy('created_at', 'asc')->first()->created_at->toFormattedDateString(),
             'end' => Transaction::orderBy('created_at', 'desc')->first()->created_at->toFormattedDateString(),
             'income' => $income + $unearnedServiceIncome,
             'expenses' => $expenses,
@@ -48,8 +49,14 @@ class ReportController extends Controller
      */
     public function balance()
     {
-        return view('report.balance',[
+        // CA, PPE, CL, CAP
 
+        $ca = Account::where('type', 'CA')->get();
+        $ppe = Account::where('type', 'PPE')->get();
+
+        return view('report.balance', [
+            'ca' => $ca,
+            'ppe' => $ppe
         ]);
     }
 
